@@ -1,0 +1,440 @@
+[
+    {
+        "vraag": "Wat zijn de eerste 10 adressen in {gemeente}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE gemeentenm = '{gemeente}'\n limit 10;"
+    },
+
+    
+    {
+        "vraag": "Hoeveel adressen zijn er in de gemeente {gemeente}?",
+        "query": "SELECT COUNT(*)\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen hebben een postcode van {postcode}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE postcode = '{postcode}'  limit 10;"
+    },
+    {
+        "vraag": "Geef de details van het adres met adresid {adresid}.",
+        "query": "SELECT *\nFROM adres\nWHERE adresid = {adresid}  limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de straathoofdnamen in de gemeente met gemeenteid {gemeenteid}?",
+        "query": "SELECT DISTINCT straatnm\nFROM adres\nWHERE gemeenteid = {gemeenteid}  limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de coördinaten van het adres {straatnm} {huisnr}, {postcode} {gemeente}?",
+        "query": "SELECT ST_AsText(geom)\nFROM adres\nWHERE straatnm = '{straatnm}' AND huisnr = '{huisnr}' AND postcode = '{postcode}' AND gemeentenm = '{gemeente}'  limit 10;"
+    },
+    {
+        "vraag": "Welke adressen liggen binnen {afstand} kilometer van een bepaald punt met longitude = {longitude} en latitude = {latitude}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand} * 1000)  limit 10;"
+    },
+    {
+        "vraag": "Geef alle adressen aan die zijn aangemaakt na {datum}.",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE creatieid > '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel unieke straten zijn er in de postcode {postcode}?",
+        "query": "SELECT COUNT(DISTINCT straatnm)\nFROM adres\nWHERE postcode = '{postcode}' limit 10;"
+    },
+    {
+        "vraag": "Wat is de gemiddelde versieid van adressen in de gemeente {gemeente}?",
+        "query": "SELECT AVG(versieid)\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Wat is het meest recente adres dat is aangemaakt in de database?",
+        "query": "SELECT *\nFROM adres\nORDER BY creatieid DESC\nLIMIT 1 limit 10;"
+    },
+    {
+        "vraag": "Welke adressen bevinden zich in de gemeente met de naam '{gemeente}'?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen zijn er in België per gemeente?",
+        "query": "SELECT gemeentenm, COUNT(*)\nFROM adres\nGROUP BY gemeentenm limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de coördinaten van het adres met de straatnaam '{straatnm}' en huisnummer '{huisnr}' in de gemeente {gemeente}?",
+        "query": "SELECT ST_AsText(geom)\nFROM adres\nWHERE straatnm = '{straatnm}' AND huisnr = '{huisnr}' AND gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen zijn aangemaakt tussen {startdatum} en {einddatum}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE creatieid BETWEEN '{startdatum}' AND '{einddatum}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van postcodes die voorkomen in de gemeente {gemeente}.",
+        "query": "SELECT DISTINCT postcode\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Wat is de oudste versie van een adres in de dataset?",
+        "query": "SELECT MIN(versieid)\nFROM adres limit 10;"
+    },
+    {
+        "vraag": "Geef de details van het adres met postcode '{postcode}' en huisnummer '{huisnr}'.",
+        "query": "SELECT *\nFROM adres\nWHERE postcode = '{postcode}' AND huisnr = '{huisnr}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen hebben een huisnummer groter dan {huisnr}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE huisnr > {huisnr} limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen zijn er zonder busnummer?",
+        "query": "SELECT COUNT(*)\nFROM adres\nWHERE busnr IS NULL limit 10;"
+    },
+    {
+        "vraag": "Wat is het gemiddelde huisnummer in de gemeente {gemeente}?",
+        "query": "SELECT AVG(huisnr)\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen liggen binnen een straal van {afstand} meter van een gegeven coördinaat met longitude = {longitude} en latitude = {latitude}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de adressen van de eerste {aantal} records in de dataset?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nLIMIT {aantal} limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen hebben een busnummer?",
+        "query": "SELECT COUNT(*)\nFROM adres\nWHERE busnr IS NOT NULL limit 10;"
+    },
+    {
+        "vraag": "Welke straten hebben de meeste adressen in {gemeente}?",
+        "query": "SELECT straatnm, COUNT(*) AS aantal_adressen\nFROM adres\nWHERE gemeentenm = '{gemeente}'\nGROUP BY straatnm\nORDER BY aantal_adressen DESC limit 10;"
+    },
+    {
+        "vraag": "Geef alle adressen die zijn bijgewerkt in {jaar}.",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE versieid > '{jaar}-01-01' limit 10;"
+    },
+    {
+        "vraag": "Wat is het gemiddelde aantal adressen per gemeente?",
+        "query": "SELECT AVG(aantal_adressen)\nFROM (SELECT COUNT(*) AS aantal_adressen\n      FROM adres\n      GROUP BY gemeentenm) AS subquery limit 10;"
+    },
+    {
+        "vraag": "Welke adressen bevinden zich in de gemeente met gemeenteid '{gemeenteid}'?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE gemeenteid = '{gemeenteid}' limit 10;"
+    },
+    {
+        "vraag": "Welke straten hebben adressen met een huisnummer boven de {huisnr}?",
+        "query": "SELECT DISTINCT straatnm\nFROM adres\nWHERE huisnr > {huisnr} limit 10;"
+    },
+    {
+        "vraag": "Geef de details van alle adressen in de straat '{straatnm}'.",
+        "query": "SELECT *\nFROM adres\nWHERE straatnm = '{straatnm}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel unieke gemeentenamen zijn er in de dataset?",
+        "query": "SELECT COUNT(DISTINCT gemeentenm)\nFROM adres limit 10;"
+    },
+    {
+        "vraag": "Geef de adressen van de eerste {aantal} records die in gebruik zijn.",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE InGebruik = 'T'\nLIMIT {aantal} limit 10;"
+    },
+    {
+        "vraag": "Welke adressen hebben een creatieid van voor {datum}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE creatieid < '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de adressen van alle records in de stad {stad}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE gemeentenm = '{stad}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel records in de dataset bevatten geen postcode?",
+        "query": "SELECT COUNT(*)\nFROM adres\nWHERE postcode IS NULL limit 10;"
+    },
+    {
+        "vraag": "Welke adressen hebben een 'InGebruik' waarde van 'F'?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE InGebruik = 'F' limit 10;"
+    },
+    {
+        "vraag": "Wat is de gemiddelde postcode voor alle adressen in {gemeente}?",
+        "query": "SELECT AVG(postcode)\nFROM adres\nWHERE gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Geef de eerste {aantal} adressen die aangemaakt zijn na {datum}.",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE creatieid > '{datum}'\nLIMIT {aantal} limit 10;"
+    },
+    {
+        "vraag": "Welke adressen liggen binnen een straal van {afstand} kilometer van een coördinaat in PostGIS met longitude = {longitude} en latitude = {latitude}?",
+        "query": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand} * 1000) limit 10;"
+    },
+
+
+    {
+        "vraag": "Geef me alle info van gebouwen",
+        "query": "SELECT * \n FROM gebouw limit 10;"
+    },
+    
+    {
+        "vraag": "Welke adressen liggen binnen de gebouwen met de status '{status}'?",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef alle adressen die zich bevinden in gebouwen die {status} zijn.",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen met de postcode {postcode}?",
+        "query": "SELECT g.gebouwid, g.status, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen bevinden zich binnen gebouwen die {geommet} zijn?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van gebouwen die {status} zijn en adressen bevatten.",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen liggen binnen gebouwen met de status '{status}'?",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode, g.gebouwid\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen bevinden zich in gebouwen die {geommet} zijn?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen in {gemeente} bevinden zich binnen gebouwen die {status} zijn?",
+        "query": "SELECT a.straatnm, a.huisnr, a.gemeentenm, g.gebouwid\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Geef een overzicht van gebouwen die {status} zijn en een adres bevatten met een busnummer.",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NOT NULL limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {geommet}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen in {gemeente} bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}' AND a.gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen bevinden zich binnen gebouwen die {status} zijn?",
+        "query": "SELECT a.straatnm, a.huisnr, a.gemeentenm\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van adressen die binnen gebouwen liggen die een afwijking hebben.",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen met een busnummer en zijn {geommet}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.busnr IS NOT NULL AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen liggen binnen gebouwen die de status '{status}' hebben?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {status}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn.",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen die {geommet} zijn?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen bevatten adressen die een afwijking hebben en {status} zijn?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke adressen liggen binnen gebouwen die {status} zijn en aangeduid door de {aanduidingsbron}?",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van gebouwen die {geommet} zijn en adressen bevatten met de functie '{functie}'.",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen met een postcode kleiner dan {postcode} en zijn {status}?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode < '{postcode}' AND g.status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "query": "SELECT COUNT(*)\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen die {geommet} zijn en een afwijking hebben?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' AND g.afwijking = 'T' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "query": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevatten adressen die {status} zijn en geen busnummer hebben?",
+        "query": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres a, gebouw g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NULL limit 10;"
+    },
+
+
+    
+    {
+        "vraag": "Welke gebouwen zijn {ingemetenType}?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van het gebouw met gebouwid {gebouwid}?",
+        "query": "SELECT *\nFROM gebouw\nWHERE gebouwid = {gebouwid} limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen hebben de status '{status}'?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid, geommet\nFROM gebouw\nWHERE status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Wat is het aantal gebouwen met de status '{status}' en {ingemetenType}?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' AND geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Geef de details van alle gebouwen met de status '{status}'.",
+        "query": "SELECT *\nFROM gebouw\nWHERE status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben een versieid van na {datum}?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE versieid > '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef de details van het gebouw met de meest recente versieid.",
+        "query": "SELECT *\nFROM gebouw\nORDER BY versieid DESC\nLIMIT 1 limit 10;"
+    },
+    {
+        "vraag": "Wat is de status van het gebouw met gebouwid {gebouwid}?",
+        "query": "SELECT status\nFROM gebouw\nWHERE gebouwid = {gebouwid} limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben de status '{status1}' of '{status2}'?",
+        "query": "SELECT gebouwid, versieid, geommet\nFROM gebouw\nWHERE status IN ('{status1}', '{status2}') limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen zijn er in totaal in de database?",
+        "query": "SELECT COUNT(*)\nFROM gebouw limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevinden zich binnen een straal van {afstand} meter van coördinaat ({longitude}, {latitude})?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van alle gebouwen die zijn {ingemetenType}?",
+        "query": "SELECT *\nFROM gebouw\nWHERE geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn gecreëerd voor {datum} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid, geommet\nFROM gebouw\nWHERE versieid < '{datum}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van gebouwen met een status van '{status}' en een versieid na {datum}?",
+        "query": "SELECT *\nFROM gebouw\nWHERE status = '{status}' AND versieid > '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben een geometrie {ingemetenType} en zijn bijgewerkt in {jaar}?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen met de status '{status}' hebben een versieid van voor {datum}?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' AND versieid < '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van gebouwen met een status van '{status}' en een geommet waarde van '{ingemetenType}'?",
+        "query": "SELECT *\nFROM gebouw\nWHERE status = '{status}' AND geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen hebben de status '{status}'?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn gecreëerd in {jaar} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef een lijst van gebouwen met de status '{status}' en een versieid van voor {datum}.",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE status = '{status}' AND versieid < '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn {ingemetenType} en bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van gebouwen met een versieid van na {datum} en de status '{status}'?",
+        "query": "SELECT *\nFROM gebouw\nWHERE versieid > '{datum}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen met een geommet waarde van '{ingemetenType}' zijn ingetekend voor {jaar}?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn gecreëerd voor {datum} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE versieid < '{datum}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Wat is het totaal aantal gebouwen met de status '{status}' en een versieid na {datum}?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' AND versieid > '{datum}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben de status '{status}' en zijn {ingemetenType}?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE status = '{status}' AND geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen zijn aangemaakt na {datum} en hebben de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE versieid > '{datum}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen hebben de status '{status}' en zijn {ingemetenType}?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE status = '{status}' AND geommet = '{ingemetenType}' limit 10;"
+    },
+    {
+        "vraag": "Wat zijn de details van gebouwen met een geommet waarde van '{ingemetenType}' en een status van '{status}'?",
+        "query": "SELECT *\nFROM gebouw\nWHERE geommet = '{ingemetenType}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen bevinden zich binnen {afstand} meter van de coördinaten ({longitude}, {latitude})?",
+        "query": "SELECT gebouwid, versieid, status\nFROM gebouw\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand}) limit 10;"
+    },
+    {
+        "vraag": "Welke gebouwen hebben een versieid van voor {datum} en de status '{status}'?",
+        "query": "SELECT gebouwid, versieid\nFROM gebouw\nWHERE versieid < '{datum}' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Hoeveel gebouwen zijn gecreëerd in {jaar} en hebben de status '{status}'?",
+        "query": "SELECT COUNT(*)\nFROM gebouw\nWHERE versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' AND status = '{status}' limit 10;"
+    },
+    {
+        "vraag": "Geef de details van gebouwen met de status '{status}' en een geommet waarde van '{ingemetenType}'.",
+        "query": "SELECT *\nFROM gebouw\nWHERE status = '{status}' AND geommet = '{ingemetenType}' limit 10;"
+    }
+]
+
+

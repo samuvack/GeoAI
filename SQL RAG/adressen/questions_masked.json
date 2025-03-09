@@ -1,0 +1,158 @@
+[
+    {
+        "question": "Wat zijn de eerste 10 adressen in {gemeente}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'\nLIMIT 10Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen zijn er in de gemeente {gemeente}?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen hebben een postcode van {postcode}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE postcode = '{postcode}'Limit 10;"
+    },
+    {
+        "question": "Geef de details van het adres met adresid {adresid}.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE adresid = {adresid}Limit 10;"
+    },
+    {
+        "question": "Wat zijn de straathoofdnamen in de gemeente met gemeenteid {gemeenteid}?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeenteid = {gemeenteid}Limit 10;"
+    },
+    {
+        "question": "Wat zijn de coördinaten van het adres {straatnm} {huisnr}, {postcode} {gemeente}?",
+        "answer": "SELECT ST_AsText(geom)\nFROM adres_selectie\nWHERE straatnm = '{straatnm}' AND huisnr = '{huisnr}' AND postcode = '{postcode}' AND gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen {afstand} kilometer van een bepaald punt met longitude = {longitude} en latitude = {latitude}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand} * 1000)Limit 10;"
+    },
+    {
+        "question": "Geef alle adressen aan die zijn aangemaakt na {datum}.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '{datum}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel unieke straten zijn er in de postcode {postcode}?",
+        "answer": "SELECT COUNT(DISTINCT straatnm)\nFROM adres_selectie\nWHERE postcode = '{postcode}'Limit 10;"
+    },
+    {
+        "question": "Wat is de gemiddelde versieid van adressen in de gemeente {gemeente}?",
+        "answer": "SELECT AVG(versieid)\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Wat is het meest recente adres dat is aangemaakt in de database?",
+        "answer": "SELECT *\nFROM adres_selectie\nORDER BY creatieid DESC\nLIMIT 1Limit 10;"
+    },
+    {
+        "question": "Welke adressen bevinden zich in de gemeente met de naam '{gemeente}'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen zijn er in België per gemeente?",
+        "answer": "SELECT gemeentenm, COUNT(*)\nFROM adres_selectie\nGROUP BY gemeentenmLimit 10;"
+    },
+    {
+        "question": "Wat zijn de coördinaten van het adres met de straatnaam '{straatnm}' en huisnummer '{huisnr}' in de gemeente {gemeente}?",
+        "answer": "SELECT ST_AsText(geom)\nFROM adres_selectie\nWHERE straatnm = '{straatnm}' AND huisnr = '{huisnr}' AND gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen zijn aangemaakt tussen {startdatum} en {einddatum}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '{startdatum}' AND '{einddatum}'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van postcodes die voorkomen in de gemeente {gemeente}.",
+        "answer": "SELECT DISTINCT postcode\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Wat is de oudste versie van een adres in de dataset?",
+        "answer": "SELECT MIN(versieid)\nFROM adres_selectieLimit 10;"
+    },
+    {
+        "question": "Geef de details van het adres met postcode '{postcode}' en huisnummer '{huisnr}'.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE postcode = '{postcode}' AND huisnr = '{huisnr}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen hebben een huisnummer groter dan {huisnr}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE huisnr > {huisnr}Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen zijn er zonder busnummer?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE busnr IS NULLLimit 10;"
+    },
+    {
+        "question": "Wat is het gemiddelde huisnummer in de gemeente {gemeente}?",
+        "answer": "SELECT AVG(huisnr)\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen een straal van {afstand} meter van een gegeven coördinaat met longitude = {longitude} en latitude = {latitude}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand})Limit 10;"
+    },
+    {
+        "question": "Wat zijn de adressen van de eerste {aantal} records in de dataset?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nLIMIT {aantal}Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen hebben een busnummer?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE busnr IS NOT NULLLimit 10;"
+    },
+    {
+        "question": "Welke straten hebben de meeste adressen in {gemeente}?",
+        "answer": "SELECT straatnm, COUNT(*) AS aantal_adressen\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'\nGROUP BY straatnm\nORDER BY aantal_adressen DESCLimit 10;"
+    },
+    {
+        "question": "Geef alle adressen die zijn bijgewerkt in {jaar}.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE versieid > '{jaar}-01-01'Limit 10;"
+    },
+    {
+        "question": "Wat is het gemiddelde aantal adressen per gemeente?",
+        "answer": "SELECT AVG(aantal_adressen)\nFROM (SELECT COUNT(*) AS aantal_adressen\n      FROM adres_selectie\n      GROUP BY gemeentenm) AS subqueryLimit 10;"
+    },
+    {
+        "question": "Welke adressen bevinden zich in de gemeente met gemeenteid '{gemeenteid}'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeenteid = '{gemeenteid}'Limit 10;"
+    },
+    {
+        "question": "Welke straten hebben adressen met een huisnummer boven de {huisnr}?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE huisnr > {huisnr}Limit 10;"
+    },
+    {
+        "question": "Geef de details van alle adressen in de straat '{straatnm}'.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE straatnm = '{straatnm}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel unieke gemeentenamen zijn er in de dataset?",
+        "answer": "SELECT COUNT(DISTINCT gemeentenm)\nFROM adres_selectieLimit 10;"
+    },
+    {
+        "question": "Geef de adressen van de eerste {aantal} records die in gebruik zijn.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE InGebruik = 'T'\nLIMIT {aantal}Limit 10;"
+    },
+    {
+        "question": "Welke adressen hebben een creatieid van voor {datum}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid < '{datum}'Limit 10;"
+    },
+    {
+        "question": "Wat zijn de adressen van alle records in de stad {stad}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = '{stad}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel records in de dataset bevatten geen postcode?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE postcode IS NULLLimit 10;"
+    },
+    {
+        "question": "Welke adressen hebben een 'InGebruik' waarde van 'F'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE InGebruik = 'F'Limit 10;"
+    },
+    {
+        "question": "Wat is de gemiddelde postcode voor alle adressen in {gemeente}?",
+        "answer": "SELECT AVG(postcode)\nFROM adres_selectie\nWHERE gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Geef de eerste {aantal} adressen die aangemaakt zijn na {datum}.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '{datum}'\nLIMIT {aantal}Limit 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen een straal van {afstand} kilometer van een coördinaat in PostGIS met longitude = {longitude} en latitude = {latitude}?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326),31370), {afstand} * 1000)Limit 10;"
+    }
+]

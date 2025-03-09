@@ -1,0 +1,114 @@
+[
+    {
+        "question": "Welke adressen liggen binnen de gebouwen met de status '{status}'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Geef alle adressen die zich bevinden in gebouwen die {status} zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode}?",
+        "answer": "SELECT g.gebouwid, g.status, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die {geommet} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die {status} zijn en adressen bevatten.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen met de status '{status}'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {geommet} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen in {gemeente} bevinden zich binnen gebouwen die {status} zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Geef een overzicht van gebouwen die {status} zijn en een adres bevatten met een busnummer.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NOT NULLLimit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {geommet}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen in {gemeente} bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}' AND a.gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die {status} zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van adressen die binnen gebouwen liggen die een afwijking hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een busnummer en zijn {geommet}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.busnr IS NOT NULL AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die de status '{status}' hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {status}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {geommet} zijn?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel gebouwen bevatten adressen die een afwijking hebben en {status} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen die {status} zijn en aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die {geommet} zijn en adressen bevatten met de functie '{functie}'.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een postcode kleiner dan {postcode} en zijn {status}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode < '{postcode}' AND g.status = '{status}'Limit 10;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {geommet} zijn en een afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' AND g.afwijking = 'T'Limit 10;"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}'Limit 10;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {status} zijn en geen busnummer hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NULLLimit 10;"
+    }
+]

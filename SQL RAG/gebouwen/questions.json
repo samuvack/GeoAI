@@ -1,0 +1,374 @@
+[
+    {
+        "question": "Welke gebouwen zijn ingemeten via GRB?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Wat zijn de details van het gebouw met gebouwid 5717044?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE gebouwid = 5717044;"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn momenteel in aanbouw?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'InAanbouw';"
+    },
+    {
+        "question": "Welke gebouwen hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat is het aantal gebouwen met de status 'NietGerealiseerd' en ingemeten via GRB?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Geef de details van alle gebouwen met de status 'Gehistoreerd'.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Welke gebouwen zijn ingeschetst en hebben de status 'Gepland'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouwen hebben een versieid van na 1 januari 2022?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE versieid > '2022-01-01';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van 1 kilometer van coördinaat (4.4024, 51.2194)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.4024, 51.2194), 4326), 31370), 1000);"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingeschetst en hebben de status 'NietGerealiseerd'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Geef de details van het gebouw met de meest recente versieid.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nORDER BY versieid DESC\nLIMIT 1;"
+    },
+    {
+        "question": "Wat is de status van het gebouw met gebouwid 5717044?",
+        "answer": "SELECT status\nFROM gebouw_selectie\nWHERE gebouwid = 5717044;"
+    },
+    {
+        "question": "Welke gebouwen hebben een status van 'Gepland' of 'InAanbouw'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE status IN ('Gepland', 'InAanbouw');"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn er in totaal in de database?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie;"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van 500 meter van coördinaat (3.7275, 51.0543)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.7275, 51.0543), 4326), 31370), 500);"
+    },
+    {
+        "question": "Welke gebouwen zijn ingemeten via GRB en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat zijn de details van alle gebouwen die zijn ingeschetst?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd voor 1 januari 2020 en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE versieid < '2020-01-01' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een status van 'InAanbouw' en een versieid na 1 januari 2021?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Welke gebouwen hebben een geometrie ingemeten via GRB en zijn bijgewerkt in 2023?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen met de status 'NietGerealiseerd' hebben een versieid van voor 2020?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid < '2020-01-01';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van 2 kilometer van coördinaat (5.329, 50.941)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(5.329, 50.941), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een status van 'Gehistoreerd' en een geommet waarde van 'Ingeschetst'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd' AND geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben een status van 'Gepland'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd in 2022 en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid BETWEEN '2022-01-01' AND '2022-12-31' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen met de status 'NietGerealiseerd' en een versieid van voor 2021.",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid < '2021-01-01';"
+    },
+    {
+        "question": "Welke gebouwen zijn ingeschetst en bevinden zich binnen een straal van 3 kilometer van coördinaat (4.356, 50.847)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.356, 50.847), 4326), 31370), 3000);"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een versieid van na 1 januari 2020 en de status 'InAanbouw'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE versieid > '2020-01-01' AND status = 'InAanbouw';"
+    },
+    {
+        "question": "Hoeveel gebouwen met een geommet waarde van 'IngemetenGRB' zijn ingetekend voor 2023?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd voor 2021 en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid < '2021-01-01' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat is het totaal aantal gebouwen met de status 'Gepland' en een versieid na 1 januari 2020?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid > '2020-01-01';"
+    },
+        {
+        "question": "Welke gebouwen hebben de status 'NietGerealiseerd' en zijn ingemeten via GRB?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke gebouwen zijn aangemaakt na 1 januari 2021 en hebben de status 'Gepland'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid > '2021-01-01' AND status = 'Gepland';"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben de status 'InAanbouw' en zijn ingemeten via GRB?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een geommet waarde van 'Ingeschetst' en een status van 'Gepland'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen 500 meter van de coördinaten (4.3517, 50.8476)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.3517, 50.8476), 4326), 31370), 500);"
+    },
+    {
+        "question": "Welke gebouwen hebben een versieid van voor 1 januari 2020 en de status 'NietGerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid < '2020-01-01' AND status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn gecreëerd in 2023 en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE versieid BETWEEN '2023-01-01' AND '2023-12-31' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Geef de details van gebouwen met de status 'InAanbouw' en een geommet waarde van 'Ingeschetst'.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen zijn ingeschetst en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat zijn de details van alle gebouwen die zijn gecreëerd na 1 januari 2022?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE versieid > '2022-01-01';"
+    },
+    {
+        "question": "Welke gebouwen hebben een status van 'Gepland' en zijn aangemaakt voor 2021?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid < '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen met de status 'Gerealiseerd' zijn ingemeten via GRB?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke gebouwen hebben de status 'Gehistoreerd' en bevinden zich binnen 2 kilometer van de coördinaten (3.7184, 51.0543)?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.7184, 51.0543), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Welke gebouwen hebben een status van 'NietGerealiseerd' en een versieid van voor 2020?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid < '2020-01-01';"
+    },
+    {
+        "question": "Geef de details van alle gebouwen met de status 'Gepland' en een versieid van na 2021.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Welke gebouwen met de status 'InAanbouw' zijn bijgewerkt in 2023?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen met een geommet waarde van 'Ingeschetst' hebben een versieid van voor 2022?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid < '2022-01-01';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd na 2022 en hebben de status 'Gerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid > '2022-01-01' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met de status 'NietGerealiseerd' die zijn bijgewerkt in 2022?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid BETWEEN '2022-01-01' AND '2022-12-31';"
+    },
+    {
+        "question": "Welke gebouwen hebben een geommet waarde van 'IngemetenGRB' en bevinden zich binnen een straal van 3 kilometer van de coördinaten (4.8971, 52.3779)?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.8971, 52.3779), 4326), 31370), 3000);"
+    },
+    {
+        "question": "Hoeveel gebouwen met de status 'InAanbouw' zijn ingeschetst?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen hebben een status van 'Gepland' en een geommet waarde van 'IngemetenGRB'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met de status 'Gehistoreerd' en een geommet waarde van 'IngemetenGRB'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke gebouwen met een geommet waarde van 'Ingeschetst' zijn bijgewerkt na 2021?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingemeten via GRB en bevinden zich binnen 1 kilometer van de coördinaten (4.3517, 50.8476)?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.3517, 50.8476), 4326), 31370), 1000);"
+    },
+    {
+        "question": "Welke gebouwen met de status 'Gepland' hebben een versieid van voor 2023?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid < '2023-01-01';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen die zich binnen 2 kilometer van de coördinaten (3.7174, 51.0543) bevinden?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.7174, 51.0543), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Welke gebouwen met een status van 'NietGerealiseerd' zijn bijgewerkt in 2023?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingemeten via GRB en hebben een status van 'InAanbouw'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND status = 'InAanbouw';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met de status 'Gepland' en een geommet waarde van 'Ingeschetst'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen met de status 'Gerealiseerd' zijn aangemaakt na 2021?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingemeten via GRB en hebben een versieid van voor 2020?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND versieid < '2020-01-01';"
+    },
+    {
+        "question": "Welke gebouwen met de status 'Gerealiseerd' bevinden zich binnen 500 meter van de coördinaten (4.4024, 51.2194)?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.4024, 51.2194), 4326), 31370), 500);"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen die zijn ingeschetst en een versieid van voor 2021 hebben?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid < '2021-01-01';"
+    },
+    {
+        "question": "Welke gebouwen zijn ingeschetst en hebben de status 'NietGerealiseerd'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Hoeveel gebouwen met de status 'InAanbouw' hebben een versieid van voor 2023?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND versieid < '2023-01-01';"
+    },
+    {
+        "question": "Welke gebouwen met de status 'Gepland' bevinden zich binnen 2 kilometer van de coördinaten (4.8945, 52.3676)?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.8945, 52.3676), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Wat zijn de details van alle gebouwen met de status 'Gerealiseerd' die zijn aangemaakt in 2023?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben een geommet waarde van 'Ingeschetst' en zijn bijgewerkt na 2021?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn gecreëerd in 2023 en reeds gerealiseerd?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE versieid BETWEEN '2023-01-01' AND '2023-12-31' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Toon alle informatie van gebouwen die zich binnen een straal van 1 kilometer van de coördinaten (4.4024, 51.2194) bevinden.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.4024, 51.2194), 4326), 31370), 1000);"
+    },
+    {
+        "question": "Geef de details van gebouwen die zijn ingeschetst en gerealiseerd.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Welke gebouwen zijn gepland en hebben een versieid van voor 2021?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid < '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn gerealiseerd en ingemeten via GRB?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'Gerealiseerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen 2 kilometer van de coördinaten (3.7184, 51.0543) en zijn gehistoreerd?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.7184, 51.0543), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Welke gebouwen zijn niet gerealiseerd en gecreëerd voor 2020?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid < '2020-01-01';"
+    },
+    {
+        "question": "Lijst alle gebouwen die na 2021 zijn gepland.",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Welke gebouwen zijn in aanbouw en zijn in 2023 bijgewerkt?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingeschetst en hebben een versieid van voor 2022?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid < '2022-01-01';"
+    },
+    {
+        "question": "Welke gebouwen zijn na 2022 gerealiseerd?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid > '2022-01-01' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Lijst alle gebouwen die niet gerealiseerd zijn en in 2022 zijn bijgewerkt.",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid BETWEEN '2022-01-01' AND '2022-12-31';"
+    },
+    {
+        "question": "Geef de gebouwen die ingemeten via GRB zijn en zich binnen een straal van 3 kilometer van coördinaten (4.8971, 52.3779) bevinden.",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.8971, 52.3779), 4326), 31370), 3000);"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingeschetst en nog in aanbouw?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = 'InAanbouw' AND geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen zijn gepland en ingemeten via GRB?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Lijst alle gebouwen die gehistoreerd en ingemeten via GRB zijn.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = 'Gehistoreerd' AND geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke gebouwen zijn ingeschetst en bijgewerkt na 2021?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = 'Ingeschetst' AND versieid > '2021-01-01';"
+    },
+    {
+        "question": "Hoeveel gebouwen die ingemeten via GRB zijn, bevinden zich binnen 1 kilometer van coördinaten (4.3517, 50.8476)?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(4.3517, 50.8476), 4326), 31370), 1000);"
+    },
+    {
+        "question": "Welke gebouwen zijn gepland en hebben een versieid van voor 2023?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND versieid < '2023-01-01';"
+    },
+    {
+        "question": "Lijst alle gebouwen binnen 2 kilometer van de coördinaten (3.7174, 51.0543).",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.7174, 51.0543), 4326), 31370), 2000);"
+    },
+    {
+        "question": "Welke gebouwen zijn niet gerealiseerd en in 2023 bijgewerkt?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'NietGerealiseerd' AND versieid BETWEEN '2023-01-01' AND '2023-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn ingemeten via GRB en in aanbouw?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = 'IngemetenGRB' AND status = 'InAanbouw';"
+    },
+    {
+        "question": "Welke gebouwen zijn gepland en ingeschetst?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = 'Gepland' AND geommet = 'Ingeschetst';"
+    }
+]

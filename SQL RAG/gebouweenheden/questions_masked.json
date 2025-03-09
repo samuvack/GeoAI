@@ -1,0 +1,322 @@
+[
+    {
+        "question": "Welke gebouweenheden zijn {status} en zijn aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Geef alle details van gebouweenheden die {status} zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en afgeleid van een object?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie '{functie}' en zijn {status}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die {status} zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben een afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND afwijking = 'T';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie '{functie}' zijn {status}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die {status} zijn en geen afwijking hebben.",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben de functie '{functie}'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND functie = '{functie}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben een afwijking en zijn afgeleid van een object?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die {status} zijn en geen afwijking hebben.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben een afwijking en zijn aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en afgeleid van een object?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie '{functie}' en zijn {status}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie '{functie}' zijn {status}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en {status}?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en hebben de functie '{functie}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND functie = '{functie}';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die {status} zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie '{functie}' zijn {status}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben de functie '{functie}'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND functie = '{functie}';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die {status} zijn en afgeleid van een object.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben geen afwijking en zijn aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'F' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn afgeleid van een object en {status}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = '{status}';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die een afwijking hebben en zijn aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en {status}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden hebben de status '{status}' en zijn aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Geef een overzicht van de gebouweenheden die {status} zijn en geen afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie '{functie}' en zijn {status}?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en hebben een afwijking?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn aangeduid door de {aanduidingsbron} en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = '{aanduidingsbron}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die de status '{status}' hebben en afgeleid zijn van een object.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben de functie '{functie}'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND functie = '{functie}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en hebben geen afwijking?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de status '{status}' en zijn afgeleid van een object?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben de functie '{functie}'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND functie = '{functie}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden hebben de functie '{functie}' en zijn {status}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = '{functie}' AND status = '{status}';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn afgeleid van een object en hebben de functie '{functie}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND functie = '{functie}';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn {status} en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND afwijking = 'F';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die de status '{status}' hebben en afgeleid zijn van een object.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de status '{status}' en de functie '{functie}'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND functie = '{functie}';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn {status} en aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = '{status}' AND posgeommet = '{aanduidingsbron}';"
+    },
+
+
+
+
+    
+    {
+        "question": "Welke adressen liggen binnen de gebouwen met de status '{status}'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Geef alle adressen die zich bevinden in gebouwen die {status} zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode}?",
+        "answer": "SELECT g.gebouwid, g.status, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die {geommet} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die {status} zijn en adressen bevatten.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen met de status '{status}'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {geommet} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Welke adressen in {gemeente} bevinden zich binnen gebouwen die {status} zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}';"
+    },
+    {
+        "question": "Geef een overzicht van gebouwen die {status} zijn en een adres bevatten met een busnummer.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {geommet}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}';"
+    },
+    {
+        "question": "Welke gebouwen in {gemeente} bevatten adressen die aangeduid zijn door de {aanduidingsbron}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = '{aanduidingsbron}' AND a.gemeentenm = '{gemeente}';"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die {status} zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Geef een lijst van adressen die binnen gebouwen liggen die een afwijking hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een busnummer en zijn {geommet}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.busnr IS NOT NULL AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die de status '{status}' hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode {postcode} en zijn {status}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '{postcode}' AND g.status = '{status}';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {geommet} zijn?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Hoeveel gebouwen bevatten adressen die een afwijking hebben en {status} zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND g.status = '{status}';"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen die {status} zijn en aangeduid door de {aanduidingsbron}?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die {geommet} zijn en adressen bevatten met de functie '{functie}'.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een postcode kleiner dan {postcode} en zijn {status}?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode < '{postcode}' AND g.status = '{status}';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die {status} zijn en in {gemeente} liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.gemeentenm = '{gemeente}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {geommet} zijn en een afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = '{geommet}' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die {status} zijn en aangeduid door de {aanduidingsbron}.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.posgeommet = '{aanduidingsbron}';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die {status} zijn en geen busnummer hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = '{status}' AND a.busnr IS NULL;"
+    },
+
+
+    
+

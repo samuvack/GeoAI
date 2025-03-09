@@ -1,0 +1,241 @@
+[
+    {
+        "question": "Welke gebouweenheden zijn gehistoreerd en zijn aangeduid door de beheerder?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Geef alle details van gebouweenheden die gepland zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gerealiseerd en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn niet gerealiseerd en afgeleid van een object?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie 'GemeenschappelijkDeel' en zijn gehistoreerd?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = 'GemeenschappelijkDeel' AND status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die gerealiseerd zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn niet gerealiseerd en aangeduid door de beheerder?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben een afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND afwijking = 'T';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie 'NietGekend' zijn gehistoreerd?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = 'NietGekend' AND status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die gepland zijn en geen afwijking hebben.",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn niet gerealiseerd en hebben de functie 'GemeenschappelijkDeel'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND functie = 'GemeenschappelijkDeel';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gepland en aangeduid door de beheerder?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben een afwijking en zijn afgeleid van een object?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die gehistoreerd zijn en geen afwijking hebben.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben een afwijking en zijn aangeduid door de beheerder?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gerealiseerd en afgeleid van een object?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie 'GemeenschappelijkDeel' en zijn gepland?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = 'GemeenschappelijkDeel' AND status = 'Gepland';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die niet gerealiseerd zijn en aangeduid door de beheerder.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie 'NietGekend' zijn gepland?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = 'NietGekend' AND status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en gerealiseerd?",
+        "answer": "SELECT gebouwehid, versieid, gebouwid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gepland en hebben de functie 'NietGekend'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND functie = 'NietGekend';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die gehistoreerd zijn en een afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn niet gerealiseerd en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden met de functie 'GemeenschappelijkDeel' zijn gerealiseerd?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = 'GemeenschappelijkDeel' AND status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gehistoreerd en hebben de functie 'NietGekend'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND functie = 'NietGekend';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die gerealiseerd zijn en afgeleid van een object.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben geen afwijking en zijn aangeduid door de beheerder?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE afwijking = 'F' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn afgeleid van een object en gepland?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = 'Gepland';"
+    },
+    {
+        "question": "Geef alle informatie van gebouweenheden die een afwijking hebben en zijn aangeduid door de beheerder.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE afwijking = 'T' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },{
+        "question": "Welke gebouweenheden zijn afgeleid van een object en gepland?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND status = 'Gepland';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden hebben de status 'NietGerealiseerd' en zijn aangeduid door de beheerder?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Geef een overzicht van de gebouweenheden die gerealiseerd zijn en geen afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie 'GemeenschappelijkDeel' en zijn gehistoreerd?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = 'GemeenschappelijkDeel' AND status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gepland en hebben een afwijking?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn aangeduid door de beheerder en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AangeduidDoorBeheerder' AND afwijking = 'F';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die de status 'Gerealiseerd' hebben en afgeleid zijn van een object.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gepland en hebben de functie 'NietGekend'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND functie = 'NietGekend';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gehistoreerd en hebben geen afwijking?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de status 'NietGerealiseerd' en zijn afgeleid van een object?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die gepland zijn en aangeduid door de beheerder.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn afgeleid van een object en hebben de functie 'GemeenschappelijkDeel'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND functie = 'GemeenschappelijkDeel';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden hebben de functie 'NietGekend' en zijn gehistoreerd?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE functie = 'NietGekend' AND status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die gerealiseerd zijn en aangeduid door de beheerder.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gepland en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn afgeleid van een object en hebben de functie 'NietGekend'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND functie = 'NietGekend';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn niet gerealiseerd en hebben geen afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND afwijking = 'F';"
+    },
+    {
+        "question": "Geef de details van gebouweenheden die de status 'Gehistoreerd' hebben en afgeleid zijn van een object.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de status 'Gepland' en de functie 'GemeenschappelijkDeel'?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND functie = 'GemeenschappelijkDeel';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gehistoreerd en aangeduid door de beheerder?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gepland en hebben een afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND afwijking = 'T';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die de functie 'NietGekend' hebben en gepland zijn.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = 'NietGekend' AND status = 'Gepland';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gerealiseerd en aangeduid door de beheerder?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouweenheden hebben de functie 'GemeenschappelijkDeel' en zijn gehistoreerd?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE functie = 'GemeenschappelijkDeel' AND status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Geef een overzicht van de gebouweenheden die afgeleid zijn van een object en geen afwijking hebben.",
+        "answer": "SELECT *\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AfgeleidVanObject' AND afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn aangeduid door de beheerder en hebben geen afwijking?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE posgeommet = 'AangeduidDoorBeheerder' AND afwijking = 'F';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn niet gerealiseerd en afgeleid van een object?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'NietGerealiseerd' AND posgeommet = 'AfgeleidVanObject';"
+    },
+    {
+        "question": "Geef een lijst van gebouweenheden die de status 'Gepland' hebben en aangeduid zijn door de beheerder.",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gepland' AND posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Hoeveel gebouweenheden zijn gehistoreerd en hebben de functie 'NietGekend'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouweenheid_selectie\nWHERE status = 'Gehistoreerd' AND functie = 'NietGekend';"
+    },
+    {
+        "question": "Welke gebouweenheden zijn gerealiseerd en hebben een afwijking?",
+        "answer": "SELECT gebouwehid, versieid\nFROM gebouweenheid_selectie\nWHERE status = 'Gerealiseerd' AND afwijking = 'T';"
+    }
+]

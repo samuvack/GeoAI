@@ -1,0 +1,158 @@
+[
+    {
+        "question": "Welke gebouwen zijn {ingemetenType}?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Wat zijn de details van het gebouw met gebouwid {gebouwid}?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE gebouwid = {gebouwid};"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben de status '{status}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE status = '{status}';"
+    },
+    {
+        "question": "Wat is het aantal gebouwen met de status '{status}' en {ingemetenType}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}' AND geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Geef de details van alle gebouwen met de status '{status}'.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen hebben een versieid van na {datum}?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE versieid > '{datum}';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand});"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND status = '{status}';"
+    },
+    {
+        "question": "Geef de details van het gebouw met de meest recente versieid.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nORDER BY versieid DESC\nLIMIT 1;"
+    },
+    {
+        "question": "Wat is de status van het gebouw met gebouwid {gebouwid}?",
+        "answer": "SELECT status\nFROM gebouw_selectie\nWHERE gebouwid = {gebouwid};"
+    },
+    {
+        "question": "Welke gebouwen hebben de status '{status1}' of '{status2}'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE status IN ('{status1}', '{status2}');"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn er in totaal in de database?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie;"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van {afstand} meter van coördinaat ({longitude}, {latitude})?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand});"
+    },
+    {
+        "question": "Welke gebouwen zijn {ingemetenType} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND status = '{status}';"
+    },
+    {
+        "question": "Wat zijn de details van alle gebouwen die zijn {ingemetenType}?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd voor {datum} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid, geommet\nFROM gebouw_selectie\nWHERE versieid < '{datum}' AND status = '{status}';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een status van '{status}' en een versieid na {datum}?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = '{status}' AND versieid > '{datum}';"
+    },
+    {
+        "question": "Welke gebouwen hebben een geometrie {ingemetenType} en zijn bijgewerkt in {jaar}?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31';"
+    },
+    {
+        "question": "Hoeveel gebouwen met de status '{status}' hebben een versieid van voor {datum}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}' AND versieid < '{datum}';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand});"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een status van '{status}' en een geommet waarde van '{ingemetenType}'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = '{status}' AND geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben de status '{status}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd in {jaar} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' AND status = '{status}';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen met de status '{status}' en een versieid van voor {datum}.",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = '{status}' AND versieid < '{datum}';"
+    },
+    {
+        "question": "Welke gebouwen zijn {ingemetenType} en bevinden zich binnen een straal van {afstand} kilometer van coördinaat ({longitude}, {latitude})?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand});"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een versieid van na {datum} en de status '{status}'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE versieid > '{datum}' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouwen met een geommet waarde van '{ingemetenType}' zijn ingetekend voor {jaar}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31';"
+    },
+    {
+        "question": "Welke gebouwen zijn gecreëerd voor {datum} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid < '{datum}' AND status = '{status}';"
+    },
+    {
+        "question": "Wat is het totaal aantal gebouwen met de status '{status}' en een versieid na {datum}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}' AND versieid > '{datum}';"
+    },
+    {
+        "question": "Welke gebouwen hebben de status '{status}' en zijn {ingemetenType}?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE status = '{status}' AND geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Welke gebouwen zijn aangemaakt na {datum} en hebben de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid > '{datum}' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouwen hebben de status '{status}' en zijn {ingemetenType}?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE status = '{status}' AND geommet = '{ingemetenType}';"
+    },
+    {
+        "question": "Wat zijn de details van gebouwen met een geommet waarde van '{ingemetenType}' en een status van '{status}'?",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE geommet = '{ingemetenType}' AND status = '{status}';"
+    },
+    {
+        "question": "Welke gebouwen bevinden zich binnen {afstand} meter van de coördinaten ({longitude}, {latitude})?",
+        "answer": "SELECT gebouwid, versieid, status\nFROM gebouw_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint({longitude}, {latitude}), 4326), 31370), {afstand});"
+    },
+    {
+        "question": "Welke gebouwen hebben een versieid van voor {datum} en de status '{status}'?",
+        "answer": "SELECT gebouwid, versieid\nFROM gebouw_selectie\nWHERE versieid < '{datum}' AND status = '{status}';"
+    },
+    {
+        "question": "Hoeveel gebouwen zijn gecreëerd in {jaar} en hebben de status '{status}'?",
+        "answer": "SELECT COUNT(*)\nFROM gebouw_selectie\nWHERE versieid BETWEEN '{jaar}-01-01' AND '{jaar}-12-31' AND status = '{status}';"
+    },
+    {
+        "question": "Geef de details van gebouwen met de status '{status}' en een geommet waarde van '{ingemetenType}'.",
+        "answer": "SELECT *\nFROM gebouw_selectie\nWHERE status = '{status}' AND geommet = '{ingemetenType}';"
+    }
+]

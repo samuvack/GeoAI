@@ -1,0 +1,262 @@
+[
+    {
+        "question": "Welke adressen liggen binnen de gebouwen met de status 'Gerealiseerd'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Geef alle adressen die zich bevinden in gebouwen die gepland zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode 9000?",
+        "answer": "SELECT g.gebouwid, g.status, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '9000';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die ingeschetst zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die aangeduid zijn door de beheerder?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die niet gerealiseerd zijn en adressen bevatten.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen met de status 'Gehistoreerd'?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gehistoreerd';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die ingemeten via GRB zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Welke adressen in Gent bevinden zich binnen gebouwen die in aanbouw zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm, g.gebouwid\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND a.gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Geef een overzicht van gebouwen die gerealiseerd zijn en een adres bevatten met een busnummer.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode 2000 en zijn ingeschetst?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '2000' AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die gepland zijn en in Antwerpen liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND a.gemeentenm = 'Antwerpen';"
+    },
+    {
+        "question": "Welke gebouwen in Gent bevatten adressen die aangeduid zijn door de beheerder?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.posgeommet = 'AangeduidDoorBeheerder' AND a.gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die niet gerealiseerd zijn?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Geef een lijst van adressen die binnen gebouwen liggen die een afwijking hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een busnummer en zijn ingeschetst?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.busnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.busnr IS NOT NULL AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die de status 'Gerealiseerd' hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de postcode 1000 en zijn niet gerealiseerd?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode = '1000' AND g.status = 'NietGerealiseerd';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die in aanbouw zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die zijn ingemeten via GRB?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Hoeveel gebouwen bevatten adressen die een afwijking hebben en gepland zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Welke adressen liggen binnen gebouwen die in aanbouw zijn en aangeduid door de beheerder?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die ingeschetst zijn en adressen bevatten met de functie 'GemeenschappelijkDeel'.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een postcode kleiner dan 2000 en zijn gepland?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode < '2000' AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die gerealiseerd zijn en in Leuven liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.gemeentenm = 'Leuven';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die ingemeten via GRB zijn en een afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'IngemetenGRB' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Geef een lijst van adressen die binnen gebouwen liggen die gepland zijn en aangeduid door de beheerder.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die in aanbouw zijn en geen busnummer hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND a.busnr IS NULL;"
+    },
+    {
+        "question": "Welke gebouwen in Brussel bevatten adressen met de functie 'NietGekend'?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.functie = 'NietGekend' AND a.gemeentenm = 'Brussel';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die een afwijking hebben en ingeschetst zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die gehistoreerd zijn en in Leuven liggen?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gehistoreerd' AND a.gemeentenm = 'Leuven';"
+    },
+    {
+        "question": "Geef een overzicht van gebouwen die gepland zijn en adressen bevatten met een afwijking.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die gerealiseerd zijn en geen busnummer hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.busnr IS NULL;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die ingeschetst zijn en in Gent liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'Ingeschetst' AND a.gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die ingemeten via GRB zijn en in Antwerpen liggen?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'IngemetenGRB' AND a.gemeentenm = 'Antwerpen';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de functie 'GemeenschappelijkDeel' en de status 'Gepland'?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die gerealiseerd zijn en aangeduid door de beheerder.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die in aanbouw zijn en geen afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND g.afwijking = 'F';"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die niet gerealiseerd zijn en in Brussel liggen?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd' AND a.gemeentenm = 'Brussel';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die gepland zijn en geen busnummer hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND a.busnr IS NULL;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die een afwijking hebben en in Leuven liggen?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.afwijking = 'T' AND a.gemeentenm = 'Leuven';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die ingemeten via GRB zijn en geen busnummer hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.geommet = 'IngemetenGRB' AND a.busnr IS NULL;"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die gerealiseerd zijn en een afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die gerealiseerd zijn en de functie 'GemeenschappelijkDeel' hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.functie = 'GemeenschappelijkDeel';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die niet gerealiseerd zijn en ingemeten via GRB?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd' AND g.geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die in aanbouw zijn en de functie 'NietGekend' hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND a.functie = 'NietGekend';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een afwijking en zijn gepland?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke adressen bevinden zich binnen gebouwen die gehistoreerd zijn en geen afwijking hebben?",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gehistoreerd' AND g.afwijking = 'F';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die een busnummer hebben en gepland zijn?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.busnr IS NOT NULL AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de functie 'NietGekend' en de status 'Gepland'?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.functie = 'NietGekend' AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Geef een lijst van gebouwen die gerealiseerd zijn en adressen bevatten die aangeduid zijn door de beheerder.",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een postcode groter dan 3000 en zijn in aanbouw?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode > '3000' AND g.status = 'InAanbouw';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in gebouwen die niet gerealiseerd zijn en een afwijking hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen in Gent bevatten adressen met de functie 'GemeenschappelijkDeel'?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.functie = 'GemeenschappelijkDeel' AND a.gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Geef een overzicht van adressen die zich binnen gebouwen bevinden die gepland zijn en aangeduid door de beheerder.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND a.posgeommet = 'AangeduidDoorBeheerder';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die gerealiseerd zijn en ingemeten via GRB?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND g.geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die in aanbouw zijn en een afwijking hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met een postcode kleiner dan 1000 en zijn ingemeten via GRB?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.postcode < '1000' AND g.geommet = 'IngemetenGRB';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die gerealiseerd zijn en een busnummer hebben.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.busnr, a.gemeentenm\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND a.busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke gebouwen in Antwerpen bevatten adressen met de status 'Gerealiseerd' en een afwijking?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gerealiseerd' AND g.afwijking = 'T' AND a.gemeentenm = 'Antwerpen';"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich binnen gebouwen die gehistoreerd zijn en een afwijking hebben?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gehistoreerd' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen met de functie 'GemeenschappelijkDeel' en zijn gepland?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND a.functie = 'GemeenschappelijkDeel' AND g.status = 'Gepland';"
+    },
+    {
+        "question": "Geef een lijst van adressen die zich binnen gebouwen bevinden die niet gerealiseerd zijn en ingeschetst zijn.",
+        "answer": "SELECT a.straatnm, a.huisnr, a.postcode\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'NietGerealiseerd' AND g.geommet = 'Ingeschetst';"
+    },
+    {
+        "question": "Welke gebouwen bevatten adressen die in aanbouw zijn en een afwijking hebben?",
+        "answer": "SELECT g.gebouwid, a.straatnm, a.huisnr, g.afwijking\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'InAanbouw' AND g.afwijking = 'T';"
+    },
+    {
+        "question": "Hoeveel adressen liggen binnen gebouwen die de status 'Gepland' hebben en in Brussel liggen?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie a, gebouw_selectie g\nWHERE ST_Within(a.geom, g.geom) AND g.status = 'Gepland' AND a.gemeentenm = 'Brussel';"
+    }
+]

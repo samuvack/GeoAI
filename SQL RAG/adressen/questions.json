@@ -1,0 +1,390 @@
+[
+    {
+      "question": "Wat zijn de eerste 10 adressen in Gent?",
+      "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Gent'\nLIMIT 10;"
+    },
+    {
+      "question": "Hoeveel adressen zijn er in de gemeente Gent?",
+      "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE gemeentenm = 'Gent';"
+    },
+    {
+      "question": "Welke adressen hebben een postcode van 9050?",
+      "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE postcode = '9050';"
+    },
+    {
+      "question": "Geef de details van het adres met adresid 414386.",
+      "answer": "SELECT *\nFROM adres_selectie\nWHERE adresid = 414386;"
+    },
+    {
+      "question": "Wat zijn de straathoofdnamen in de gemeente met gemeenteid 44021?",
+      "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeenteid = 44021;"
+    },
+    {
+      "question": "Wat zijn de coördinaten van het adres Bellevuestraat 8, 9050 Gent?",
+      "answer": "SELECT ST_AsText(geom)\nFROM adres_selectie\nWHERE straatnm = 'Bellevuestraat' AND huisnr = '8' AND postcode = '9050' AND gemeentenm = 'Gent';"
+    },
+    {
+      "question": "Welke adressen liggen binnen 1 kilometer van een bepaald punt met longitude = 3.5 en latitude = 51.2?",
+      "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.5, 51.2), 4326),31370), 1000);"
+    },
+    {
+      "question": "Geef alle adressen aan die zijn aangemaakt na 1 januari 2020.",
+      "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2020-01-01';"
+    },
+    {
+      "question": "Hoeveel unieke straten zijn er in de postcode 9050?",
+      "answer": "SELECT COUNT(DISTINCT straatnm)\nFROM adres_selectie\nWHERE postcode = '9050';"
+    },
+    {
+      "question": "Wat is de gemiddelde versieid van adressen in de gemeente Gent?",
+      "answer": "SELECT AVG(versieid)\nFROM adres_selectie\nWHERE gemeentenm = 'Gent';"
+    },
+        {
+        "question": "Wat is het meest recente adres dat is aangemaakt in de database?",
+        "answer": "SELECT *\nFROM adres_selectie\nORDER BY creatieid DESC\nLIMIT 1;"
+    },
+    {
+        "question": "Welke adressen bevinden zich in de gemeente met de naam 'Brussel'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Brussel';"
+    },
+    {
+        "question": "Hoeveel adressen zijn er in België per gemeente?",
+        "answer": "SELECT gemeentenm, COUNT(*)\nFROM adres_selectie\nGROUP BY gemeentenm;"
+    },
+    {
+        "question": "Wat zijn de coördinaten van het adres met de straatnaam 'Kerkstraat' en huisnummer '10' in de gemeente Antwerpen?",
+        "answer": "SELECT ST_AsText(geom)\nFROM adres_selectie\nWHERE straatnm = 'Kerkstraat' AND huisnr = '10' AND gemeentenm = 'Antwerpen';"
+    },
+    {
+        "question": "Welke adressen zijn aangemaakt tussen 2010 en 2020?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '2010-01-01' AND '2020-12-31';"
+    },
+    {
+        "question": "Geef een lijst van postcodes die voorkomen in de gemeente Gent.",
+        "answer": "SELECT DISTINCT postcode\nFROM adres_selectie\nWHERE gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Wat is de oudste versie van een adres in de dataset?",
+        "answer": "SELECT MIN(versieid)\nFROM adres_selectie;"
+    },
+    {
+        "question": "Geef de details van het adres met postcode '1000' en huisnummer '1'.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE postcode = '1000' AND huisnr = '1';"
+    },
+    {
+        "question": "Welke adressen hebben een huisnummer groter dan 100?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE huisnr > 100;"
+    },
+    {
+        "question": "Hoeveel adressen zijn er zonder busnummer?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE busnr IS NULL;"
+    },
+    {
+        "question": "Wat is het gemiddelde huisnummer in de gemeente Brussel?",
+        "answer": "SELECT AVG(huisnr)\nFROM adres_selectie\nWHERE gemeentenm = 'Brussel';"
+    },
+    {
+        "question": "Welke adressen liggen binnen een straal van 500 meter van een gegeven coördinaat met longitude = 3.88 en latitude = 50.85?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.88, 50.85), 4326),31370), 500);"
+    },
+    {
+        "question": "Wat zijn de adressen van de eerste 20 records in de dataset?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nLIMIT 20;"
+    },
+    {
+        "question": "Hoeveel adressen hebben een busnummer?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke straten hebben de meeste adressen in Gent?",
+        "answer": "SELECT straatnm, COUNT(*) AS aantal_adressen\nFROM adres_selectie\nWHERE gemeentenm = 'Gent'\nGROUP BY straatnm\nORDER BY aantal_adressen DESC;"
+    },
+    {
+        "question": "Geef alle adressen die zijn bijgewerkt in 2023.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE versieid > '2023-01-01';"
+    },
+    {
+        "question": "Wat is het gemiddelde aantal adressen per gemeente?",
+        "answer": "SELECT AVG(aantal_adressen)\nFROM (SELECT COUNT(*) AS aantal_adressen\n      FROM adres_selectie\n      GROUP BY gemeentenm) AS subquery;"
+    },
+    {
+        "question": "Welke adressen bevinden zich in de gemeente met gemeenteid '1000'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeenteid = '1000';"
+    },
+    {
+        "question": "Welke straten hebben adressen met een huisnummer boven de 50?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE huisnr > 50;"
+    },
+    {
+        "question": "Geef de details van alle adressen in de straat 'Nieuwstraat'.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE straatnm = 'Nieuwstraat';"
+    },
+    {
+        "question": "Hoeveel unieke gemeentenamen zijn er in de dataset?",
+        "answer": "SELECT COUNT(DISTINCT gemeentenm)\nFROM adres_selectie;"
+    },
+    {
+        "question": "Geef de adressen van de eerste 5 records die in gebruik zijn.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE InGebruik = 'T'\nLIMIT 5;"
+    },
+    {
+        "question": "Welke adressen hebben een creatieid van voor 2000?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid < '2000-01-01';"
+    },
+    {
+        "question": "Wat zijn de adressen van alle records in de stad Antwerpen?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen';"
+    },
+    {
+        "question": "Hoeveel records in de dataset bevatten geen postcode?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE postcode IS NULL;"
+    },
+    {
+        "question": "Welke adressen hebben een 'InGebruik' waarde van 'F'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE InGebruik = 'F';"
+    },
+    {
+        "question": "Wat is de gemiddelde postcode voor alle adressen in Gent?",
+        "answer": "SELECT AVG(postcode)\nFROM adres_selectie\nWHERE gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Geef de eerste 10 adressen die aangemaakt zijn na 1 januari 2022.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2022-01-01'\nLIMIT 10;"
+    },
+    {
+        "question": "Welke adressen liggen binnen een straal van 2 kilometer van een coördinaat in PostGIS met longitude = 3.45 en latitude = 50.65?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.45, 50.65), 4326),31370), 2000);"
+    },
+    {
+        "question": "Hoeveel unieke straten zijn er in de stad Brugge?",
+        "answer": "SELECT COUNT(DISTINCT straatnm)\nFROM adres_selectie\nWHERE gemeentenm = 'Brugge';"
+    },
+    {
+        "question": "Wat is het grootste huisnummer in de gemeente Leuven?",
+        "answer": "SELECT MAX(huisnr)\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven';"
+    },
+    {
+        "question": "Welke adressen hebben een postcode tussen 2000 en 3000?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE postcode BETWEEN '2000' AND '3000';"
+    },
+    {
+        "question": "Geef de details van alle adressen die in gebruik zijn.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE InGebruik = 'T';"
+    },
+    {
+        "question": "Wat zijn de coördinaten van alle adressen in de postcode 3000?",
+        "answer": "SELECT ST_AsText(geom)\nFROM adres_selectie\nWHERE postcode = '3000';"
+    },
+    {
+        "question": "Welke adressen zijn aangemaakt na 1 januari 2020 en zijn in gebruik?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2020-01-01' AND InGebruik = 'T';"
+    },
+    {
+        "question": "Hoeveel adressen hebben een postcode kleiner dan 1000?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE postcode < '1000';"
+    },
+    {
+        "question": "Welke adressen hebben een creatieid van na 2020 en een busnummer?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2020-01-01' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke straten in Gent hebben adressen met een huisnummer kleiner dan 50?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Gent' AND huisnr < 50;"
+    },
+    {
+        "question": "Geef alle adressen waarvan het huisnummer een even nummer is.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE huisnr % 2 = 0;"
+    },
+    {
+        "question": "Hoeveel adressen zijn er aangemaakt in 2021?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE creatieid BETWEEN '2021-01-01' AND '2021-12-31';"
+    },
+    {
+        "question": "Geef alle adressen met een busnummer in de stad Gent.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Gent' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Geef alle adressen die zijn bijgewerkt na 1 januari 2023 en een busnummer hebben.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE versieid > '2023-01-01' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke straten hebben een huisnummer boven 200?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE huisnr > 200;"
+    },
+    {
+        "question": "Geef de details van het adres dat het dichtst bij een gegeven coördinaat ligt met longitude=3.56 en latitude=51.22.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nORDER BY geom <-> ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.56, 51.22),31370), 4326)\nLIMIT 1;"
+    },
+    {
+        "question": "Hoeveel adressen zijn aangemaakt voor 2015 in de gemeente Brugge?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE gemeentenm = 'Brugge' AND creatieid < '2015-01-01';"
+    },
+    {
+        "question": "Wat zijn de details van het adres met de meeste recente creatieid in Gent?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Gent'\nORDER BY creatieid DESC\nLIMIT 1;"
+    },
+    {
+        "question": "Welke straten in Brussel hebben een adres met een busnummer?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Brussel' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Geef de eerste 10 adressen met een postcode tussen 1000 en 2000.",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE postcode BETWEEN '1000' AND '2000'\nLIMIT 10;"
+    },
+    {
+        "question": "Welke adressen liggen in de gemeente met gemeenteid 1500 en hebben een huisnummer hoger dan 50?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeenteid = '1500' AND huisnr > 50;"
+    },
+    {
+        "question": "Wat zijn de details van het adres met de hoogste versieid in Antwerpen?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen'\nORDER BY versieid DESC\nLIMIT 1;"
+    },
+    {
+        "question": "Hoeveel adressen bevinden zich in een straal van 500 meter van de coördinaten (3.564, 50.1234)?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(3.564, 50.1234), 4326),31370), 500);"
+    },
+    {
+        "question": "Welke straten in Leuven hebben een adres met een postcode groter dan 3000?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven' AND postcode > '3000';"
+    },
+    {
+        "question": "Wat is het aantal adressen per straat in Gent?",
+        "answer": "SELECT straatnm, COUNT(*) AS aantal_adressen\nFROM adres_selectie\nWHERE gemeentenm = 'Gent'\nGROUP BY straatnm;"
+    },
+    {
+        "question": "Welke adressen hebben een versieid kleiner dan '2022-01-01'?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE versieid < '2022-01-01';"
+    },
+    {
+        "question": "Welke adressen in Antwerpen hebben geen busnummer?",
+        "answer": "SELECT straatnm, huisnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen' AND busnr IS NULL;"
+    },
+    {
+        "question": "Wat is het totale aantal adressen met een postcode van '3000' in de dataset?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE postcode = '3000';"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd in 2018 in de gemeente Brugge?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Brugge' AND creatieid BETWEEN '2018-01-01' AND '2018-12-31';"
+    },
+    {
+        "question": "Wat is het adres met de laagste creatieid in de gemeente Leuven?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven'\nORDER BY creatieid ASC\nLIMIT 1;"
+    },
+    {
+        "question": "Welke straten in Antwerpen hebben meer dan 50 adressen?",
+        "answer": "SELECT straatnm, COUNT(*) AS aantal_adressen\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen'\nGROUP BY straatnm\nHAVING COUNT(*) > 50;"
+    },
+    {
+        "question": "Hoeveel unieke gemeentenamen komen voor in de dataset?",
+        "answer": "SELECT COUNT(DISTINCT gemeentenm)\nFROM adres_selectie;"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd in 2020 en hebben een huisnummer kleiner dan 10?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '2020-01-01' AND '2020-12-31' AND huisnr < 10;"
+    },
+    {
+        "question": "Wat zijn de details van het oudste adres in de gemeente Gent?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Gent'\nORDER BY creatieid ASC\nLIMIT 1;"
+    },
+    {
+        "question": "Welke adressen bevinden zich in een straal van 3 kilometer van de coördinaten (2.8954, 51.2354)?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE ST_DWithin(geom, ST_TRANSFORM(ST_SetSRID(ST_MakePoint(2.8954, 51.2354), 4326),31370), 3000);"
+    },
+    {
+        "question": "Welke straten hebben adressen met zowel een huisnummer als een busnummer?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE huisnr IS NOT NULL AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Wat is het totale aantal adressen met een huisnummer groter dan 500 in Brussel?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE gemeentenm = 'Brussel' AND huisnr > 500;"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd na 1 januari 2010 en hebben een postcode tussen 1000 en 2000?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2010-01-01' AND postcode BETWEEN '1000' AND '2000';"
+    },
+    {
+        "question": "Wat zijn de details van alle adressen in de straat met de naam 'Stationstraat' in Leuven?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE straatnm = 'Stationstraat' AND gemeentenm = 'Leuven';"
+    },
+    {
+        "question": "Welke adressen hebben een postcode groter dan 4000 en bevinden zich in de gemeente met gemeenteid 7000?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeenteid = '7000' AND postcode > '4000';"
+    },
+    {
+        "question": "Geef de details van de adressen met een busnummer groter dan 50 in Gent.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Gent' AND busnr > 50;"
+    },
+    {
+        "question": "Wat zijn de adressen in de gemeente Brugge die gecreëerd zijn na 1 januari 2015?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Brugge' AND creatieid > '2015-01-01';"
+    },
+    {
+        "question": "Welke straten in Antwerpen hebben een huisnummer hoger dan 200?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen' AND huisnr > 200;"
+    },
+    {
+        "question": "Geef de details van de adressen in de straat 'Kerkstraat' in Brussel.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE straatnm = 'Kerkstraat' AND gemeentenm = 'Brussel';"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd tussen 2010 en 2020 en hebben een busnummer?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '2010-01-01' AND '2020-12-31' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Wat zijn de details van alle adressen in de stad Leuven met een huisnummer kleiner dan 50?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven' AND huisnr < 50;"
+    },
+    {
+        "question": "Hoeveel unieke straatnamen komen voor in de stad Gent?",
+        "answer": "SELECT COUNT(DISTINCT straatnm)\nFROM adres_selectie\nWHERE gemeentenm = 'Gent';"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd in 2022 en hebben een postcode kleiner dan 4000?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '2022-01-01' AND '2022-12-31' AND postcode < '4000';"
+    },
+    {
+        "question": "Wat zijn de details van de adressen in de straat 'Dorpsstraat' met een busnummer in Antwerpen?",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE straatnm = 'Dorpsstraat' AND gemeentenm = 'Antwerpen' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke straten in Gent hebben een huisnummer groter dan 300?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Gent' AND huisnr > 300;"
+    },
+    {
+        "question": "Wat is het totaal aantal adressen in de gemeente Brugge met een busnummer?",
+        "answer": "SELECT COUNT(*)\nFROM adres_selectie\nWHERE gemeentenm = 'Brugge' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke adressen hebben een creatieid van voor 2010 en een huisnummer boven de 200?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid < '2010-01-01' AND huisnr > 200;"
+    },
+    {
+        "question": "Welke adressen in Leuven zijn bijgewerkt in 2023?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven' AND versieid > '2023-01-01';"
+    },
+    {
+        "question": "Welke adressen in Antwerpen hebben een huisnummer groter dan 150 en een busnummer?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Antwerpen' AND huisnr > 150 AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Wat zijn de adressen in de gemeente Brussel met een versieid kleiner dan 2020?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE gemeentenm = 'Brussel' AND versieid < '2020-01-01';"
+    },
+    {
+        "question": "Geef de details van de adressen in Leuven die zijn bijgewerkt in 2022 en hebben een busnummer.",
+        "answer": "SELECT *\nFROM adres_selectie\nWHERE gemeentenm = 'Leuven' AND versieid BETWEEN '2022-01-01' AND '2022-12-31' AND busnr IS NOT NULL;"
+    },
+    {
+        "question": "Welke straten in Gent hebben een adres met een huisnummer kleiner dan 20?",
+        "answer": "SELECT DISTINCT straatnm\nFROM adres_selectie\nWHERE gemeentenm = 'Gent' AND huisnr < 20;"
+    },
+    {
+        "question": "Welke adressen zijn gecreëerd na 2015 en hebben een huisnummer kleiner dan 30?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid > '2015-01-01' AND huisnr < 30;"
+    },
+    {
+        "question": "Wat zijn de adressen in de stad Gent die zijn gecreëerd in 2023 en een busnummer hebben?",
+        "answer": "SELECT straatnm, huisnr, busnr, postcode, gemeentenm\nFROM adres_selectie\nWHERE creatieid BETWEEN '2023-01-01' AND '2023-12-31' AND busnr IS NOT NULL;"
+    }
+]
