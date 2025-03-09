@@ -1,0 +1,138 @@
+[
+  {
+    "vraag": "Wat is het telefoonnummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:telefoonnummer)\n}"
+  },
+    {
+    "vraag": "Geef me alle informatie van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?property ?value WHERE {ex:DigitaalVlaanderen ?property ?value .}"
+  },
+  {
+    "vraag": "Wat is het e-mailadres van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:email)\n}"
+  },
+  {
+    "vraag": "Wat is het adres van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:adres)\n}"
+  },
+  {
+    "vraag": "Wat is de straatnaam van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:straatnaam)\n}"
+  },
+  {
+    "vraag": "Wat is de postcode van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:postcode)\n}"
+  },
+  {
+    "vraag": "Wat is het ondernemingsnummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:ondernemingsnummer)\n}"
+  },
+  {
+    "vraag": "Wat is de NACE-code van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:naceCode)\n}"
+  },
+  {
+    "vraag": "Wat is het BTW-nummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:btwNummer)\n}"
+  },
+  {
+    "vraag": "Wat is de website van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:website)\n}"
+  },
+  {
+    "vraag": "Wat zijn de openingstijden van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:openingstijden)\n}"
+  },
+  {
+    "vraag": "Wat is het bankrekeningnummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:bankrekeningnummer)\n}"
+  },
+  {
+    "vraag": "Wat is het vergunningsnummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:vergunningsnummer)\n}"
+  },
+  {
+    "vraag": "Wat is de rechtsvorm van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:rechtsvorm)\n}"
+  },
+  {
+    "vraag": "Wie is de directeur van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftDirecteur ?value .\n  FILTER(?property = ex:directeur)\n}"
+  },
+  {
+    "vraag": "Wat is de vestigingsplaats van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:vestigingsplaats)\n}"
+  },
+  {
+    "vraag": "Hoeveel medewerkers heeft {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:aantalMedewerkers)\n}"
+  },
+  {
+    "vraag": "Wat is de geschiedenis van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:geschiedenis)\n}"
+  },
+  {
+    "vraag": "Wat is de missie van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:missie)\n}"
+  },
+  {
+    "vraag": "Wie is de CEO van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftCEO ?value .\n  FILTER(?property = ex:ceo)\n}"
+  },
+  {
+    "vraag": "Wat is de omzet van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:omzet)\n}"
+  },
+  {
+    "vraag": "Wat is het aantal filialen van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:aantalFilialen)\n}"
+  },
+  {
+    "vraag": "Wat is de IBAN van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:iban)\n}"
+  },
+  {
+    "vraag": "Wat is het SWIFT-nummer van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:swiftNummer)\n}"
+  },
+  {
+    "vraag": "Wat is de jaarlijkse omzet van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:omzetJaar)\n}"
+  },
+  {
+    "vraag": "Wat is het aantal partners van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT (COUNT(?partner) AS ?value) WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftPartner ?partner .\n}"
+  },
+  {
+    "vraag": "Welke awards heeft {organisatie} gewonnen?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftAward ?award .\n  ?award ex:naam ?value .\n}"
+  },
+  {
+    "vraag": "Welke producten verkoopt {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:verkooptProduct ?product .\n  ?product ex:naam ?value .\n}"
+  },
+  {
+    "vraag": "Wat is het investeringsbedrag van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:investeringsBedrag)\n}"
+  },
+  {
+    "vraag": "Wat zijn de bedrijfswaarden van {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:bedrijfswaarden)\n}"
+  },
+  {
+    "vraag": "Welke branches heeft {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftBranche ?branche .\n  ?branche ex:naam ?value .\n}"
+  },
+  {
+    "vraag": "Welke sociale media accounts heeft {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ex:heeftSocialMediaAccount ?value .\n}"
+  },
+  {
+    "vraag": "Wat is de contactinformatie van {naam}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?persoon a ex:Persoon ; ex:naam \"{naam}\" ; ex:contactinformatie ?value .\n  FILTER(?property = ex:contactinformatie)\n}"
+  },
+  {
+    "vraag": "Hoeveel vestigingen heeft {organisatie}?",
+    "sparql": "PREFIX ex: <http://example.org/schema#>\nSELECT ?property ?value WHERE {\n  ?organisatie a ex:Organisatie ; ex:naam \"{organisatie}\" ; ?property ?value .\n  FILTER(?property = ex:aantalVestigingen)\n}"
+  }
+]

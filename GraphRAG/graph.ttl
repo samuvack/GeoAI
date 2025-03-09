@@ -1,0 +1,251 @@
+@prefix ex: <http://example.org/schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Organisatie: Microsoft
+ex:Microsoft a ex:Organisatie ;
+    ex:naam "Microsoft" ;
+    ex:telefoonnummer "+1-425-882-8080" ;
+    ex:email "contact@microsoft.com" ;
+    ex:adres "One Microsoft Way, Redmond, WA 98052, USA" ;
+    ex:straatnaam "One Microsoft Way" ;
+    ex:postcode "98052" ;
+    ex:ondernemingsnummer "1234567890" ;
+    ex:naceCode "6201" ;
+    ex:btwNummer "US123456789" ;
+    ex:website "https://www.microsoft.com" ;
+    ex:openingstijden "Ma-Vr 09:00-17:00" ;
+    ex:bankrekeningnummer "US00MSFT123456789" ;
+    ex:vergunningsnummer "MSFT-VG-2021-001" ;
+    ex:heeftContactpersoon ex:SatyaNadella ;
+    ex:faxnummer "+1-425-706-7329" ;
+    ex:algemeenEmail "info@microsoft.com" ;
+    ex:missie "To empower every person and every organization on the planet to achieve more." ;
+    ex:heeftDirecteur ex:SatyaNadella ;
+    ex:aantalWerknemers "163000"^^xsd:integer ;
+    ex:oprichtingsdatum "1975-04-04"^^xsd:date ;
+    ex:bedrijfsadres "One Microsoft Way, Redmond, WA 98052, USA" ;
+    ex:biedtDienstAan ex:Azure, ex:Office365 ;
+    ex:verkooptProduct ex:Windows, ex:Xbox ;
+    ex:klantenserviceNummer "+1-800-642-7676" ;
+    ex:hoofdkantoorAdres "One Microsoft Way, Redmond, WA 98052, USA" ;
+    ex:kvkNummer "9876543210" ;
+    ex:heeftAward ex:BestTechCompany2021 ;
+    ex:rechtsvorm "Naamloze Vennootschap" ;
+    ex:vergunningStatus "Actief" ;
+    ex:heeftBranche ex:SoftwareDevelopment ;
+    ex:omzet "143000000000"^^xsd:decimal ;
+    ex:persEmail "press@microsoft.com" ;
+    ex:aantalFilialen "200"^^xsd:integer ;
+    ex:investeringsBedrag "5000000000"^^xsd:decimal ;
+    ex:heeftCEO ex:SatyaNadella ;
+    ex:jaarverslag "https://www.microsoft.com/en-us/annualreports" ;
+    ex:heeftSocialMediaAccount ex:MicrosoftTwitter, ex:MicrosoftLinkedIn ;
+    ex:vestigingsplaats "Redmond" ;
+    ex:geschiedenis "Opgericht in 1975 door Bill Gates en Paul Allen." ;
+    ex:aantalMedewerkers "163000"^^xsd:integer ;
+    ex:contactinformatie "Telefoon: +1-425-882-8080, Email: contact@microsoft.com" ;
+    ex:visie "Wij streven ernaar om lokale kansen, groei en impact te creëren in elk land over de hele wereld." ;
+    ex:heeftPartner ex:Intel, ex:Dell ;
+    ex:bedrijfswaarden "Innovatie, Diversiteit, Maatschappelijke Verantwoordelijkheid" ;
+    ex:aantalVestigingen "100"^^xsd:integer ;
+    ex:swiftNummer "MSFTUS33XXX" ;
+    ex:iban "US00MSFT123456789" .
+
+# Persoon: Satya Nadella
+ex:SatyaNadella a ex:Persoon ;
+    ex:naam "Satya Nadella" ;
+    ex:telefoonnummer "+1-425-882-8080" ;
+    ex:email "satya.nadella@microsoft.com" ;
+    ex:adres "One Microsoft Way, Redmond, WA 98052, USA" ;
+    ex:geboortedatum "1967-08-19"^^xsd:date ;
+    ex:werktBij ex:Microsoft .
+
+# Diensten en Producten
+ex:Azure a ex:Dienst ;
+    ex:naam "Microsoft Azure" .
+
+ex:Office365 a ex:Dienst ;
+    ex:naam "Microsoft Office 365" .
+
+ex:Windows a ex:Product ;
+    ex:naam "Microsoft Windows" .
+
+ex:Xbox a ex:Product ;
+    ex:naam "Microsoft Xbox" .
+
+# Awards
+ex:BestTechCompany2021 a ex:Award ;
+    ex:naam "Beste Tech Bedrijf 2021" .
+
+# Branche
+ex:SoftwareDevelopment a ex:Branche ;
+    ex:naam "Softwareontwikkeling" .
+
+# Partners
+ex:Intel a ex:Organisatie ;
+    ex:naam "Intel Corporation" .
+
+ex:Dell a ex:Organisatie ;
+    ex:naam "Dell Technologies" .
+
+# Social Media Accounts
+ex:MicrosoftTwitter a ex:SocialMediaAccount ;
+    ex:platform "Twitter" ;
+    ex:accountHandle "@Microsoft" .
+
+ex:MicrosoftLinkedIn a ex:SocialMediaAccount ;
+    ex:platform "LinkedIn" ;
+    ex:accountHandle "Microsoft" .
+
+# Organisatie: Apple
+ex:Apple a ex:Organisatie ;
+    ex:naam "Apple" ;
+    ex:telefoonnummer "+1-408-996-1010" ;
+    ex:email "contact@apple.com" ;
+    ex:adres "1 Apple Park Way, Cupertino, CA 95014, USA" ;
+    ex:straatnaam "Apple Park Way" ;
+    ex:postcode "95014" ;
+    ex:ondernemingsnummer "1122334455" ;
+    ex:naceCode "2630" ;
+    ex:btwNummer "US1122334455" ;
+    ex:website "https://www.apple.com" ;
+    ex:openingstijden "Ma-Vr 09:00-17:00" ;
+    ex:bankrekeningnummer "US00APPL1122334455" ;
+    ex:vergunningsnummer "APPL-VG-2021-002" ;
+    ex:heeftContactpersoon ex:TimCook ;
+    ex:faxnummer "+1-408-996-0275" ;
+    ex:algemeenEmail "info@apple.com" ;
+    ex:missie "Om de beste gebruikerservaring te bieden door innovatieve hardware, software en diensten." ;
+    ex:heeftDirecteur ex:TimCook ;
+    ex:aantalWerknemers "147000"^^xsd:integer ;
+    ex:oprichtingsdatum "1976-04-01"^^xsd:date ;
+    ex:bedrijfsadres "1 Apple Park Way, Cupertino, CA 95014, USA" ;
+    ex:biedtDienstAan ex:AppleMusic, ex:iCloud ;
+    ex:verkooptProduct ex:iPhone, ex:MacBook ;
+    ex:klantenserviceNummer "+1-800-275-2273" ;
+    ex:hoofdkantoorAdres "1 Apple Park Way, Cupertino, CA 95014, USA" ;
+    ex:kvkNummer "5544332211" ;
+    ex:heeftAward ex:MostInnovativeCompany2021 ;
+    ex:rechtsvorm "Naamloze Vennootschap" ;
+    ex:vergunningStatus "Actief" ;
+    ex:heeftBranche ex:ConsumerElectronics ;
+    ex:omzet "274500000000"^^xsd:decimal ;
+    ex:persEmail "press@apple.com" ;
+    ex:aantalFilialen "500"^^xsd:integer ;
+    ex:investeringsBedrag "10000000000"^^xsd:decimal ;
+    ex:heeftCEO ex:TimCook ;
+    ex:jaarverslag "https://www.apple.com/investor/earnings-call/" ;
+    ex:heeftSocialMediaAccount ex:AppleTwitter, ex:AppleLinkedIn ;
+    ex:vestigingsplaats "Cupertino" ;
+    ex:geschiedenis "Opgericht in 1976 door Steve Jobs, Steve Wozniak en Ronald Wayne." ;
+    ex:aantalMedewerkers "147000"^^xsd:integer ;
+    ex:contactinformatie "Telefoon: +1-408-996-1010, Email: contact@apple.com" ;
+    ex:visie "Wij geloven in het zeggen van nee tegen duizenden projecten zodat we ons kunnen focussen op de weinige die echt belangrijk zijn." ;
+    ex:heeftPartner ex:Foxconn, ex:TSMC ;
+    ex:bedrijfswaarden "Innovatie, Privacy, Milieubewustzijn" ;
+    ex:aantalVestigingen "200"^^xsd:integer ;
+    ex:swiftNummer "APPLUS33XXX" ;
+    ex:iban "US00APPL1122334455" .
+
+# Persoon: Tim Cook
+ex:TimCook a ex:Persoon ;
+    ex:naam "Tim Cook" ;
+    ex:telefoonnummer "+1-408-996-1010" ;
+    ex:email "tim.cook@apple.com" ;
+    ex:adres "1 Apple Park Way, Cupertino, CA 95014, USA" ;
+    ex:geboortedatum "1960-11-01"^^xsd:date ;
+    ex:werktBij ex:Apple .
+
+# Diensten en Producten
+ex:AppleMusic a ex:Dienst ;
+    ex:naam "Apple Music" .
+
+ex:iCloud a ex:Dienst ;
+    ex:naam "iCloud" .
+
+ex:iPhone a ex:Product ;
+    ex:naam "Apple iPhone" .
+
+ex:MacBook a ex:Product ;
+    ex:naam "Apple MacBook" .
+
+# Awards
+ex:MostInnovativeCompany2021 a ex:Award ;
+    ex:naam "Meest Innovatieve Bedrijf 2021" .
+
+# Branche
+ex:ConsumerElectronics a ex:Branche ;
+    ex:naam "Consumentenelektronica" .
+
+# Partners
+ex:Foxconn a ex:Organisatie ;
+    ex:naam "Foxconn Technology Group" .
+
+ex:TSMC a ex:Organisatie ;
+    ex:naam "Taiwan Semiconductor Manufacturing Company" .
+
+# Social Media Accounts
+ex:AppleTwitter a ex:SocialMediaAccount ;
+    ex:platform "Twitter" ;
+    ex:accountHandle "@Apple" .
+
+ex:AppleLinkedIn a ex:SocialMediaAccount ;
+    ex:platform "LinkedIn" ;
+    ex:accountHandle "Apple" .
+
+# Organisatie: Digitaal Vlaanderen
+ex:DigitaalVlaanderen a ex:Organisatie ;
+    ex:naam "DigitaalVlaanderen" ;
+    ex:telefoonnummer "092761500" ;
+    ex:email "digitaal.vlaanderen@vlaanderen.be" ;
+    ex:adres "Havenlaan 88/b, 1000 Brussel" ;
+    ex:straatnaam "Havenlaan 88/b" ;
+    ex:postcode "1000 " ;
+    ex:ondernemingsnummer "0316.380.841" ;
+    ex:btwNummer "BE0123456789" ;
+    ex:website "https://www.vlaanderen.be/digitaal-vlaanderen" ;
+    ex:openingstijden "Ma-Vr 09:00-17:00" ;
+    ex:bankrekeningnummer "BE00 0000 0000 0000" ;
+    ex:vergunningsnummer "DV-VG-2021-003" ;
+    ex:heeftContactpersoon "Deraymaeker Katleen" ;
+    ex:faxnummer "025537205" .
+
+# Persoon: Jan Janssens
+ex:JanJanssens a ex:Persoon ;
+    ex:naam "Jan Janssens" ;
+    ex:telefoonnummer "+32-2-553-0002" ;
+    ex:email "jan.janssens@digitaal.vlaanderen.be" ;
+    ex:adres "Koning Albert II-laan 15, 1210 Brussel, België" ;
+    ex:geboortedatum "1975-05-15"^^xsd:date ;
+    ex:werktBij ex:DigitaalVlaanderen .
+
+# Diensten
+ex:MijnBurgerprofiel a ex:Dienst ;
+    ex:naam "Mijn Burgerprofiel" .
+
+ex:VlaanderenConnect a ex:Dienst ;
+    ex:naam "Vlaanderen Connect" .
+
+# Awards
+ex:DigitalInnovation2021 a ex:Award ;
+    ex:naam "Digital Innovation Award 2021" .
+
+# Branche
+ex:Overheidsdiensten a ex:Branche ;
+    ex:naam "Overheidsdiensten" .
+
+# Partners
+ex:VDAB a ex:Organisatie ;
+    ex:naam "Vlaamse Dienst voor Arbeidsbemiddeling en Beroepsopleiding" .
+
+ex:InformatieVlaanderen a ex:Organisatie ;
+    ex:naam "Informatie Vlaanderen" .
+
+# Social Media Accounts
+ex:DigitaalVlaanderenTwitter a ex:SocialMediaAccount ;
+    ex:platform "Twitter" ;
+    ex:accountHandle "@DigVlaanderen" .
+
+ex:DigitaalVlaanderenLinkedIn a ex:SocialMediaAccount ;
+    ex:platform "LinkedIn" ;
+    ex:accountHandle "Digitaal Vlaanderen" .
